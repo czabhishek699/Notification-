@@ -1,0 +1,39 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Notification Example</h1>
+    <button onclick="showNotification()">Show Notification</button>
+
+    <script>
+        function showNotification() {
+            // Check if the browser supports the Notification API
+            if ('Notification' in window) {
+                // Request permission to show notifications
+                Notification.requestPermission().then(function (permission) {
+                    if (permission === 'granted') {
+                        // Create and show the notification
+                        var notification = new Notification('Hello!', {
+                            body: 'This is a notification from your web app.',
+                            icon: 'path/to/icon.png' // Optional icon
+                        });
+                    }
+                });
+            } else {
+                alert('Your browser does not support notifications.');
+            }
+        }
+    </script>
+</body>
+</html>
